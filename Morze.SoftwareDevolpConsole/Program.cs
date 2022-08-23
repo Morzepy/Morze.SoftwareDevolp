@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Morze.SoftwareDevolp.Domain;
+using Morze.SoftwareDevolp.Persistence;
+using System;
 
 namespace Morze.SoftwareDevolp.SoftwareDevolpConsole
 {
