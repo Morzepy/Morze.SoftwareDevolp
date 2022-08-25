@@ -13,26 +13,26 @@ namespace Persistence
         #region Fake Date
         private List<TimeRecord> empolees = new List<TimeRecord>()
         {
-             new TimeRecord(DateTime.Now.AddDays(-3),"Иванов",8,"test message"),
-             new TimeRecord(DateTime.Now.AddDays(-3),"Шишкин",8,"test message 1"),
-             new TimeRecord(DateTime.Now.AddDays(-2),"Иванов",12,"test message 2 "),
-             new TimeRecord(DateTime.Now.AddDays(-2),"Шишкин",4,"test message 3"),
+             new TimeRecord(DateTime.Now.Date.AddDays(-3),"Иванов",8,"test message"),
+             new TimeRecord(DateTime.Now.Date.AddDays(-3),"Шишкин",8,"test message 1"),
+             new TimeRecord(DateTime.Now.Date.AddDays(-2),"Иванов",12,"test message 2 "),
+             new TimeRecord(DateTime.Now.Date.AddDays(-2),"Шишкин",4,"test message 3"),
         };
         
 
         private List<TimeRecord> freelancers = new List<TimeRecord>()
         {
-             new TimeRecord(DateTime.Now.AddDays(-3),"Алексеев",5,"test message "),
-             new TimeRecord(DateTime.Now.AddDays(-4),"Брин",7,"test message 1"),
-             new TimeRecord(DateTime.Now.AddDays(-1),"Шольц",10,"test message 2 "),
-             new TimeRecord(DateTime.Now.AddDays(-6),"Смит",4,"test message 3"),
+             new TimeRecord(DateTime.Now.Date.AddDays(-3),"Алексеев",5,"test message "),
+             new TimeRecord(DateTime.Now.Date.AddDays(-4),"Брин",7,"test message 1"),
+             new TimeRecord(DateTime.Now.Date.AddDays(-1),"Шольц",10,"test message 2 "),
+             new TimeRecord(DateTime.Now.Date.AddDays(-6),"Смит",4,"test message 3"),
         };
         
 
         private List<TimeRecord> managers = new List<TimeRecord>()
         {
-             new TimeRecord(DateTime.Now.AddDays(-2),"Плотников",8,"test message 1"),
-             new TimeRecord(DateTime.Now.AddDays(-1),"Плотников",8,"test message 1")
+             new TimeRecord(DateTime.Now.Date.AddDays(-2),"Плотников",8,"test message 1"),
+             new TimeRecord(DateTime.Now.Date.AddDays(-1),"Плотников",8,"test message 1")
         };
 
         private List<User> users = new List<User>()
@@ -88,7 +88,7 @@ namespace Persistence
             {
                 to = DateTime.Now;
             }
-            return records.Where(x => from.Value >= x.Date && x.Date <= to).ToList();
+            return records.Where(x => from.Value <= x.Date && x.Date <= to).ToList();
         }
 
         public List<TimeRecord> ReportGetByUser(string userName, UserRole userRole, DateTime? from = null, DateTime? to = null)
@@ -130,7 +130,7 @@ namespace Persistence
 
         public User UserGet(string name)
         {
-            return Users().First(x => x.Name == name);
+            return Users().FirstOrDefault(x => x.Name == name);
         }
 
        
